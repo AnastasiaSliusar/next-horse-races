@@ -1,11 +1,12 @@
 {
-  "name": "horse_rases",
+  "name": "horse_races",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "api": "npm start --workspace=server",
-    "start": "concurrently \"npm run api\" \"npm start --workspace=app \""
+    "start": "concurrently \"npm run api\" \"npm start --workspace=app \"",
+    "test": "concurrently \"npm run api\" \"npm test --workspace=app \""
   },
   "author": "Anastasiia Sliusar",
   "license": "ISC",

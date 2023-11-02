@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "json-server -p 3001 --watch ./config/horse_rases.json"
+        "start": "json-server -p 3001 --watch ./config/horse_races.json"
     },
     "author": "Anastasiia Sliusar",
     "license": "ISC"

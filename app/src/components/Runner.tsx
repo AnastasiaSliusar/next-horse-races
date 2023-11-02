@@ -12,8 +12,12 @@
         verticalAlign: 'middle',
         position: 'relative'
         }}>
-               <span>
-                {imageSrc && <img src={imageSrc} width={20} height={20} style={{ marginRight: '0.5rem'}}/>} 
+        <span style={{
+            display: 'inline-block',
+            height: '1.25rem',
+        }}
+        >
+            {imageSrc && <img src={imageSrc} width={20} height={20} style={{ marginRight: '0.5rem'}}/>} 
                 <span style={{ position: 'absolute', bottom: '0.8rem'}}>{name}</span>
            </span>
                 <span style={{

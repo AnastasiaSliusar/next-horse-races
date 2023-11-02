@@ -12,12 +12,11 @@ const filterRaces = (races: RacesData[], selectedRaces:RaceType[])=>{
 const sort = (obj1: RacesData, obj2: RacesData) => {
     let amountObj2 = obj2.purse.amount
     let amountObj1 = obj1.purse.amount;
-    //eur
     if (obj1.purse.currency !== obj2.purse.currency) {
         if(obj1.purse.currency === currency) {
-            amountObj2 = currencyRate * amountObj2; //euro/gbp = 1.15
+            amountObj2 = currencyRate * amountObj2;
         } else {
-            amountObj1 = currencyRate * amountObj1; //into geur
+            amountObj1 = currencyRate * amountObj1;
         }
     }
     if (amountObj1 < amountObj2) {
@@ -31,13 +30,6 @@ const sort = (obj1: RacesData, obj2: RacesData) => {
 }
 const getTime = (postTime: number)=>{
     const date = new Date(postTime);
-    let mins = date.getMinutes();
-    let seconds = date.getSeconds();
-
-    console.log('mins');
-    console.log(mins);
-    console.log('seconds');
-    console.log(seconds);
     return date.getMinutes();
 }
 
@@ -53,14 +45,12 @@ const getFormatedNextRace = (race: RacesData)=>{
     }
 }
 export const getNextRace = (races: RacesData[], selectedRaces:RaceType[])=>{
-    let newRaces =  filterRaces(races, selectedRaces);
-    console.log('newRaces');
-    console.log(newRaces);
-    let sortedRaces = newRaces.sort(sort);
-    console.log('sortedRaces');
-    console.log(sortedRaces);
-   let formatNextRace = getFormatedNextRace(sortedRaces[0]);
-    console.log('formatNextRace');
-  console.log(formatNextRace);
-    return formatNextRace;
+    const newRaces =  filterRaces(races, selectedRaces);
+    if (newRaces.length) {
+        const sortedRaces = newRaces.sort(sort);
+        const formatNextRace = getFormatedNextRace(sortedRaces[0]);
+        return formatNextRace;
+    } else {
+        return null;
+    }
 }

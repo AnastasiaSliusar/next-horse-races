@@ -17,18 +17,17 @@ let RaceFilter = raceTypeArr.map((raceType) => {
     let checked = selectedRaces.includes(raceType.id) ? true : false;
         return <div key={raceType.id} style={
             {
-                pointerEvents: !raceType.active ? 'none' : 'all',
-                color: !raceType.active ? 'grey' : 'black',
+                color: 'black',
                 display: 'inline-block',
                 marginLeft: '0.625rem'
             }
         }>
-            <input type="checkbox" id={raceType.id} checked={checked} value={raceType.id} name={raceType.id} disabled={!raceType.active} onChange={onChange}/>
-            <label htmlFor={raceType.id}><img src={`/assets/race-types/race-type-${raceType.id}.svg`} alt={raceType.name} style={{ marginLeft: '0.188rem'}}/>
+            <input type="checkbox" id={raceType.id} checked={checked} value={raceType.id} name={raceType.id} onChange={onChange}/>
+            <label htmlFor={raceType.id}><img src={images[`race${raceType.id}${!checked ? '_disabled' : ''}`]} alt={raceType.name} style={{ marginLeft: '0.188rem'}}/>
         </label>
     </div>
 });
-return <section>
+return <section data-testid="filter">
     {RaceFilter}
     </section>;
 }

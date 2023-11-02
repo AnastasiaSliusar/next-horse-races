@@ -43,7 +43,6 @@ export type FilterProps = {
 export type RaceListItem = {
         id: RaceType;
         name: RaceTypeName;
-        active: boolean;
 }
 
 export type NextRaceBlockProp = {

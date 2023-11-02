@@ -8,14 +8,10 @@ const NextRaceBlock = ( { selectedRaces }: NextRaceBlockProp ) => {
     const [races, setCards] = useState<RacesData[]>([]);
 
     useEffect(() => {
-        //?
-    
         if (!races.length) {
         fetch('http://localhost:3001/data')
           .then(resp => resp.json())
           .then(data => {
-            console.log('data');
-            console.dir(data);
             setCards(data.races);
           }).catch((error: Error)=>{
             console.error(`APP: ${error.message}`);
@@ -37,7 +33,7 @@ const NextRaceBlock = ( { selectedRaces }: NextRaceBlockProp ) => {
         </div>
     });
 
-let nextRaceBlock = nextRace ? <a href={`http://www.racebets.com/bet/${nextRace.id_race}`} target="_blank" rel="noreferrer" style={ {
+let nextRaceBlock = nextRace ? <a data-testid="next-race-block" href={`http://www.racebets.com/bet/${nextRace.id_race}`} target="_blank" rel="noreferrer" style={ {
         display: 'block',
         color: '#fff',
         width: '14.875rem',
@@ -73,7 +69,7 @@ let nextRaceBlock = nextRace ? <a href={`http://www.racebets.com/bet/${nextRace.
                     <span style={{ marginRight: '0.25rem'}}>{nextRace.num_runners} runners</span>
                     <span style={{ marginRight: '0.25rem'}}>| {nextRace.distance} m</span>
                     <span style={{ marginRight: '0.25rem'}}>| {`${nextRace.purse.amount} ${nextRace.purse.currency}`} </span>
-                    <span style={{  position:'absolute', right: 0}}><img src={images[`race${nextRace.race_type}`]}/></span>
+                    <span style={{  position:'absolute', right: 0}}><img src={images[`race${nextRace.race_type}_white`]}/></span>
 
             </div>
         </div>
